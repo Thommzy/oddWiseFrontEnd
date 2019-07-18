@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,AAAA,MAAM,AAAA,KAAK,AAAA,aAAa,CAAC;EAC1B,aAAa,EAAE,cAAc;CAC9B",
+    "sources": [
+        "Timeline.scss"
+    ],
+    "names": [],
+    "file": "Timeline.css"
+}

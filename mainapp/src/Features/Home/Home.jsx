@@ -5,7 +5,7 @@ import {
   Header,
   Image,
   Button,
-  Icon
+Icon
 } from "semantic-ui-react";
 
 const Home = ({ history }) => {
@@ -28,7 +28,7 @@ const Home = ({ history }) => {
             />
             Odd-Wise
           </Header>
-          <Button onClick={() => history.push("/login")} size='huge' inverted>
+          <Button onClick={() => history.push("/signup")} size='huge' inverted>
             Get started
             <Icon name='right arrow' inverted />
           </Button>

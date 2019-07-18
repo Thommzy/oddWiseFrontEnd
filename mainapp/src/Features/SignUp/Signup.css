@@ -1,0 +1,30 @@
+.ui.inverted.segment.signUpForm {
+  background: #011a33;
+  position: absolute;
+  top: 24%;
+  left: 32%;
+  width: 27%;
+}
+
+img.ui.medium.image.HomePageThirdImage {
+  position: absolute;
+  left: 37%;
+  top: 40%;
+}
+
+.oddWiseHomeSignPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-image: linear-gradient(137deg, #b35015 0%, #46212b 70%, #b35015 29%) !important;
+  height: 100vh;
+}
+
+img.ui.medium.image.HomePageSecondImage {
+  position: absolute;
+  top: 60%;
+}
+/*# sourceMappingURL=Signup.css.map */

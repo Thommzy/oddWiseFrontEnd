@@ -1,0 +1,7 @@
+$RegisterButtonColor: #011a33;
+$RegisterButtonText: #ffffff;
+
+button.ui.large.fluid.button.registerButton {
+  background: $RegisterButtonColor !important;
+  color: $RegisterButtonText !important;
+}

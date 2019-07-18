@@ -1,0 +1,7 @@
+$LoginButtonColor: #011a33;
+$LoginButtonText: #ffffff;
+
+button.ui.large.fluid.button.LoginButton {
+  background: $LoginButtonColor !important;
+  color: $LoginButtonText !important;
+}
