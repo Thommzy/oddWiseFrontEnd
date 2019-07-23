@@ -7,6 +7,7 @@ import NavBar from "../../Features/Nav/NavBar";
 import TestComponent from "../../Features/TestArea/TestComponent";
 import ModalManager from "../../Features/Modals/ModalManager";
 import Timeline from "../../Features/Timeline/Timeline";
+import Profile from "../../Features/Profile/Profile";
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
                 <Switch key={this.props.location.key}>
                   <Route exact path='/test' component={TestComponent} />
                   <Route exact path='/timeline' component={Timeline} />
+                  <Route exact path='/profile' component={Profile} />
                 </Switch>
               </Container>
             </Fragment>

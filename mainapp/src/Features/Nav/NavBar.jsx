@@ -40,6 +40,7 @@ class NavBar extends Component {
           </Menu.Item>
           <Menu.Item name='Test' as={Link} to='/test' />
           <Menu.Item name='Timeline' as={Link} to='/timeline' />
+          <Menu.Item name='Profile' as={Link} to='/profile' />
           {/* <Menu.Item>
             <Button floated='right' positive inverted content='Create Event' />
           </Menu.Item> */}
