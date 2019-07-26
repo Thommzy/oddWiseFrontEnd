@@ -6,15 +6,22 @@ import "./NavBar.css";
 import { openModal } from "../Modals/ModalActions";
 import SignedOutMenu from "./Menus/SignedOutMenu";
 import SignedInMenu from "./Menus/SignedInMenu";
+import { logOut } from "../../Features/Auth/Login/LoginAction";
 
 const actions = {
-  openModal
+  openModal,
+  logOut
 };
 
-class NavBar extends Component {
-  state = {
-    authenticated: false
+
+
+function mapStateToProps(state) {
+  return {
+    authenticated: state.auth.authenticated
   };
+}
+
+class NavBar extends Component {
   handleSignIn = () => {
     this.props.openModal("LoginModal");
   };
@@ -24,13 +31,12 @@ class NavBar extends Component {
   };
 
   handleSignOut = () => {
-    this.setState({
-      authenticated: false
-    });
+    this.props.logOut();
     this.props.history.push("/");
   };
   render() {
-    const { autheticated } = this.state;
+    const { auth } = this.props;
+    const authenticated = auth;
     return (
       <Menu inverted fixed='top'>
         <Container>
@@ -44,8 +50,11 @@ class NavBar extends Component {
           {/* <Menu.Item>
             <Button floated='right' positive inverted content='Create Event' />
           </Menu.Item> */}
-          {autheticated ? (
-            <SignedInMenu signOut={this.handleSignOut} />
+          {authenticated ? (
+            <SignedInMenu
+              signOut={this.handleSignOut}
+              currentUser={auth.currentUser}
+            />
           ) : (
             <SignedOutMenu
               signIn={this.handleSignIn}
@@ -59,6 +68,6 @@ class NavBar extends Component {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(NavBar);

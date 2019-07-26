@@ -1,9 +1,25 @@
-.ui.segment.profileBanner {
-  border: 0px;
-  border-radius: 0px;
-  padding: 0px;
-  margin: 0px;
-  box-shadow: 0 1px 2px 0 transparent;
-  margin-top: -5% !important;
-  margin-left: -7%;
+.ui.segment.profilePictureSegment {
+  border: 0px solid transparent !important;
+  border-radius: 0px !important;
+  box-shadow: 0 1px 2px 0 transparent !important;
+  border-bottom: 1px solid grey !important;
+}
+
+.ui.segment.profileDetails {
+  border: 0px solid transparent !important;
+  border-radius: 0px !important;
+  box-shadow: 0 1px 2px 0 transparent !important;
+  border-bottom: 1px solid grey !important;
+}
+
+.ui.segment.profilePost {
+  border: 0px solid transparent !important;
+  border-radius: 0px !important;
+  box-shadow: 0 1px 2px 0 transparent !important;
+  border-bottom: 1px solid grey !important;
+}
+.ui.segment.profileOthers {
+  border: 0px solid transparent !important;
+  border-radius: 0px !important;
+  box-shadow: 0 1px 2px 0 transparent !important;
 }

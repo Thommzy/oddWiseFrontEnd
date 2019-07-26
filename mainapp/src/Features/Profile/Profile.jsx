@@ -1,23 +1,28 @@
 import React, { Component } from "react";
-import ProfileBanner from "./ProfileBanner";
-import { Grid, Image } from "semantic-ui-react";
+import { Grid, Image, Container } from "semantic-ui-react";
+import ProfileImageSection from "./ProfileImageSection";
+import "./Profile.css";
+import ProfileDetails from "./ProfileDetails";
+import ProfilePost from "./ProfilePost";
+import ProfileOthers from "./ProfileOthers";
 
 export default class Profile extends Component {
   render() {
     return (
-      <div>
+      <Container fluid>
         <Grid>
-          <Grid.Row columns={2}>
-            <Grid.Column>
-              <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+          <Grid.Row>
+            <Grid.Column width={3}>
+              <ProfileImageSection />
+              <ProfileDetails />
+              <ProfileOthers />
             </Grid.Column>
-            <Grid.Column>
-              <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+            <Grid.Column width={13}>
+              <ProfilePost />
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <ProfileBanner />
-      </div>
+      </Container>
     );
   }
 }
