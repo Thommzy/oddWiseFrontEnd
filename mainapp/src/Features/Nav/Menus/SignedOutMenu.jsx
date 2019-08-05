@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 const SignedOutMenu = ({ signIn, register }) => {
   return (
@@ -8,8 +8,6 @@ const SignedOutMenu = ({ signIn, register }) => {
       <Button onClick={signIn} basic inverted content='Login' />
       <Button
         onClick={register}
-        as={Link}
-        to='/signup'
         basic
         inverted
         content='Register'

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { closeModal } from "../../Modals/ModalActions";
 
 export const AUTHENTICATED = "authenticated_user";
 export const UNAUTHENTICATED = "unauthenticated_user";
@@ -9,11 +10,11 @@ export function signInAction({ email, password }, history) {
   return async dispatch => {
     try {
       const res = await axios.post(`${URL}/login`, { email, password });
-      console.log(res);
-      console.log(res.data.error);
       dispatch({ type: AUTHENTICATED });
-      localStorage.setItem("user", res.data.user.apikey);
+      localStorage.setItem("user", res.data._id);
+      console.log(res);
       history.push("/timeline");
+      dispatch(closeModal());
     } catch (error) {
       dispatch({
         type: AUTHENTICATION_ERROR,
@@ -23,12 +24,12 @@ export function signInAction({ email, password }, history) {
   };
 }
 
-export const logOut = () => {
+export function logOut() {
+  localStorage.clear();
   return {
-    type: SIGN_OUT_USER
+    type: UNAUTHENTICATED
   };
-};
-
+}
 //bUsnLWdLiXVfkByCgDaSdgnSGqFIkBBnBuOywBohlHAgVtIdGKGAlhvQSSGemRVBjgwCgj
 
 //bUsnLWdLiXVfkByCgDaSdgnSGqFIkBBnBuOywBohlHAgVtIdGKGAlhvQSSGemRVBjgwCgj

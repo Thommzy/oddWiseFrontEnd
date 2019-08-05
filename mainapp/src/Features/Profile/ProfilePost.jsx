@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Segment, Grid, Card, Icon, Button, Label } from "semantic-ui-react";
+import ProfilePostTextArea from "./ProfilePostTextArea";
 
 const description = [
   "Amy is a violinist with 2 years experience in the wedding industry.",
@@ -13,6 +14,7 @@ class ProfilePost extends Component {
         <Grid>
           <Grid.Row>
             <Grid.Column width={16}>
+              <ProfilePostTextArea />
               <Card className='timelineCard' fluid>
                 <Card.Content header='About Amy' />
                 <Card.Content description={description} />

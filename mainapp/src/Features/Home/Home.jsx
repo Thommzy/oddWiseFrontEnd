@@ -5,7 +5,7 @@ import {
   Header,
   Image,
   Button,
-Icon
+  Icon
 } from "semantic-ui-react";
 
 const Home = ({ history }) => {

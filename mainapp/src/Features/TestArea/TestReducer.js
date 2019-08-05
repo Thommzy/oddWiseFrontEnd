@@ -2,12 +2,7 @@ import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./TestConstants";
 import { createReducer } from "../../app/Common/util/ReducerUtils";
 
 const initialState = {
-  data: 42,
-  first_name: "",
-  last_name: "",
-  email: "",
-  mobile_no: "",
-  password: ""
+  data: 42
 };
 
 // const TestReducer = (state = initialState, actions) => {

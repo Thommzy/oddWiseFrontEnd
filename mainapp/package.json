@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^5.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "reactstrap": "^8.0.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-form": "^7.4.2",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "revalidate": "^1.2.0",
     "semantic-ui-react": "^0.87.3"

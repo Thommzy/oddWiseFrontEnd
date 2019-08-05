@@ -1,30 +1,40 @@
-export const userPostFetch = user => {
+import axios from "axios";
+import { closeModal } from "../../Modals/ModalActions";
+
+export const AUTHENTICATED = "authenticated_user";
+export const UNAUTHENTICATED = "unauthenticated_user";
+export const AUTHENTICATION_ERROR = "authentication_error";
+export const SIGN_OUT_USER = "SIGN_OUT_USER";
+const URL = "https://oddwyse.herokuapp.com/api/v1/user";
+export function RegisterAction(
+  { first_name, last_name, email, mobile_no, password },
+  history
+) {
   return async dispatch => {
-    const resp = await fetch(
-      "https://oddwyse.herokuapp.com/api/v1/user/signup",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({ user })
-      }
-    );
-    const data = await resp.json();
-    console.log(data);
-    if (data.reguser) {
-      // Here you should have logic to handle invalid creation of a user.
-      // This assumes your Rails API will return a JSON object with a key of
-      // 'message' if there is an error with creating the user, i.e. invalid username
-    } else {
-      localStorage.setItem("token", data.jwt);
-      dispatch(loginUser(data.user));
+    try {
+      const res = await axios.post(`${URL}/signup`, {
+        first_name,
+        last_name,
+        email,
+        mobile_no,
+        password
+      });
+      dispatch({ type: AUTHENTICATED });
+      console.log(res.data);
+      localStorage.setItem("user", res.data.reguser.apikey);
+      history.push("/timeline");
+      dispatch(closeModal());
+    } catch (error) {
+      dispatch({
+        type: AUTHENTICATION_ERROR,
+        payload: "Invalid email or password"
+      });
     }
   };
-};
+}
 
-const loginUser = userObj => ({
-  type: "LOGIN_USER",
-  payload: userObj
-});
+export const logOut = () => {
+  return {
+    type: SIGN_OUT_USER
+  };
+};
