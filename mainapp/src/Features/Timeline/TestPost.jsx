@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchProducts } from "./postActions";
+import { fetchProducts, loadPost } from "./postActions";
 
 const mapStateToProps = state => ({
   products: state.post.items,
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 class TestPost extends React.Component {
   componentDidMount() {
     return function(dispatch) {
-      dispatch(fetchProducts());
+      dispatch(loadPost());
     };
   }
 

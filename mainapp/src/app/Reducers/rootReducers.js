@@ -6,6 +6,7 @@ import ModalReducers from "../../Features/Modals/ModalReducers";
 import AsyncReducer from "../../Features/Async/AsyncReducer";
 import LoginAuthNewReducer from "../../Features/Auth/Login/LoginAuthNewReducer";
 import productReducer from "../../Features/Timeline/postReducer";
+import NewReducerNow from "../../Features/Timeline/NewReducerNow";
 
 const rootReducer = combineReducers({
   test: TestReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   modals: ModalReducers,
   auth: LoginAuthNewReducer,
   async: AsyncReducer,
-  post: productReducer
+  post: productReducer,
+  newpost: NewReducerNow
 });
 
 export default rootReducer;

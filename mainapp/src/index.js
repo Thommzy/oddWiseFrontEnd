@@ -7,8 +7,10 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import { ConfigureStore } from "./app/Store/ConfigureStore";
+import { fetchProducts } from "./Features/Timeline/postActions";
 
 const store = ConfigureStore();
+store.dispatch(fetchProducts());
 
 console.log(store.getState());
 
