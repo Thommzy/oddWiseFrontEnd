@@ -24,26 +24,26 @@ export const fetchProductsFailure = error => ({
   payload: { error }
 });
 
-export const loadPost = () => {
-  return async dispatch => {
-    try {
-      dispatch(asyncActionStart());
-      const posts = await fetch(
-        "https://oddwyse.herokuapp.com/api/v1/post/allPost"
-      );
-      dispatch({
-        type: FETCH_POST,
-        payload: {
-          posts
-        }
-      });
-      dispatch(asyncActionFinish());
-    } catch (error) {
-      console.log(error);
-      dispatch(asyncActionError());
-    }
-  };
-};
+// export const loadPost = () => {
+//   return async dispatch => {
+//     try {
+//       dispatch(asyncActionStart());
+//       const posts = await fetch(
+//         "https://oddwyse.herokuapp.com/api/v1/post/allPost"
+//       );
+//       dispatch({
+//         type: FETCH_POST,
+//         payload: {
+//           posts
+//         }
+//       });
+//       dispatch(asyncActionFinish());
+//     } catch (error) {
+//       console.log(error);
+//       dispatch(asyncActionError());
+//     }
+//   };
+// };
 // const delay = ms => {
 //   return new Promise(resolve => setTimeout(resolve, ms));
 // };
@@ -57,6 +57,7 @@ export function fetchProducts() {
       );
       const res = await response;
       const json = res.json();
+      console.log(json);
       json.then(a => {
         //console.log(a.post);
         // this.setState({

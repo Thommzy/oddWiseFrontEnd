@@ -3,7 +3,7 @@ import {
   DECREMENT_COUNTER
 } from "../TestArea/TestConstants";
 import { createReducer } from "../../app/Common/util/ReducerUtils";
-import { FETCH_POST } from "./postConstants";
+// import { FETCH_POST } from "./postConstants";
 
 const initialState = [];
 
@@ -26,12 +26,12 @@ const decrementCounter = state => {
   return { ...state, data: state.data - 1 };
 };
 
-const fetchPosts = (state, payload) => {
-  return payload.posts;
-};
+// const fetchPosts = (state, payload) => {
+//   return payload.posts;
+// };
 
 export default createReducer(initialState, {
   [INCREMENT_COUNTER]: incrementCounter,
-  [DECREMENT_COUNTER]: decrementCounter,
-  [FETCH_POST]: fetchPosts
+  [DECREMENT_COUNTER]: decrementCounter
+  // [FETCH_POST]: fetchPosts
 });

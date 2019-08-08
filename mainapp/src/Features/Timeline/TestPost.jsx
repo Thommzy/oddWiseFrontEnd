@@ -10,11 +10,11 @@ const mapStateToProps = state => ({
 });
 
 class TestPost extends React.Component {
-  componentDidMount() {
-    return function(dispatch) {
-      dispatch(loadPost());
-    };
-  }
+  // componentDidMount() {
+  //   return function(dispatch) {
+  //     dispatch(loadPost());
+  //   };
+  // }
 
   render() {
     const { error, loading, products } = this.props;

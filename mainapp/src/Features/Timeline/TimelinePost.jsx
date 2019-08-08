@@ -40,9 +40,41 @@ class TimelinePost extends Component {
 
     if (loading) {
       return (
-        <div>
-          <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-        </div>
+        <Container>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={2} />
+              <Grid.Column width={12}>
+                <div>
+                  <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+                </div>
+              </Grid.Column>
+              <Grid.Column width={2} />
+            </Grid.Row>
+          </Grid>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={2} />
+              <Grid.Column width={12}>
+                <div>
+                  <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+                </div>
+              </Grid.Column>
+              <Grid.Column width={2} />
+            </Grid.Row>
+          </Grid>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={2} />
+              <Grid.Column width={12}>
+                <div>
+                  <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+                </div>
+              </Grid.Column>
+              <Grid.Column width={2} />
+            </Grid.Row>
+          </Grid>
+        </Container>
       );
     }
     return (
