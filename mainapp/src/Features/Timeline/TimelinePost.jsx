@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Icon, Container, Grid } from "semantic-ui-react";
+import { Card, Icon, Container, Grid, Image } from "semantic-ui-react";
 // import FloatButton from "../Button/FloatButton";
 import { connect } from "react-redux";
 
@@ -39,13 +39,18 @@ class TimelinePost extends Component {
     }
 
     if (loading) {
-      return <div>Loading...</div>;
+      return (
+        <div>
+          <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+        </div>
+      );
     }
     return (
       <Container>
         <Grid>
           <Grid.Row>
             <Grid.Column width={2} />
+
             <Grid.Column width={12}>
               {products.products &&
                 products.products.map((product, index) => (

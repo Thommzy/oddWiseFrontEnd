@@ -7,6 +7,7 @@ import AsyncReducer from "../../Features/Async/AsyncReducer";
 import LoginAuthNewReducer from "../../Features/Auth/Login/LoginAuthNewReducer";
 import productReducer from "../../Features/Timeline/postReducer";
 import NewReducerNow from "../../Features/Timeline/NewReducerNow";
+import profilePostReducer from "../../Features/Profile/ProfilePostReducers";
 
 const rootReducer = combineReducers({
   test: TestReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   auth: LoginAuthNewReducer,
   async: AsyncReducer,
   post: productReducer,
-  newpost: NewReducerNow
+  newpost: NewReducerNow,
+  addpost: profilePostReducer
 });
 
 export default rootReducer;

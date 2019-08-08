@@ -8,7 +8,6 @@ export default class Timeline extends Component {
     return (
       <div>
         <TimelinePost />
-        <TestPost />
       </div>
     );
   }

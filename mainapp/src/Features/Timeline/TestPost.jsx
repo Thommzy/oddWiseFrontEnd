@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchProducts, loadPost } from "./postActions";
+import { Image } from "semantic-ui-react";
 
 const mapStateToProps = state => ({
   products: state.post.items,
@@ -23,14 +24,18 @@ class TestPost extends React.Component {
     }
 
     if (loading) {
-      return <div>Loading...</div>;
+      return (
+        <div>
+          <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+        </div>
+      );
     }
 
     return (
       <ul>
         {products.post &&
           products.post.map((product, index) => (
-            <h1 key={index}>{product.text}</h1>
+            <p key={index}>{product.text}</p>
           ))}
       </ul>
     );
