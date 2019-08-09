@@ -10,7 +10,7 @@ import {
   Container
 } from "semantic-ui-react";
 import ProfilePostTextArea from "./ProfilePostTextArea";
-import { fetchAllPosts } from "./ProfilePostAction";
+// import { fetchPersonalPosts } from "./ProfilePostAction";
 import { connect } from "react-redux";
 
 const description = [
@@ -19,16 +19,16 @@ const description = [
 ].join(" ");
 
 const mapStateToProps = state => ({
-  personalPosts: state.fhpost.items,
-  loading: state.fhpost.loading,
-  error: state.fhpost.error
+  personalPosts: state.ppost.items,
+  loading: state.ppost.loading,
+  error: state.ppost.error
 });
 class ProfilePost extends Component {
-  componentDidMount() {
-    return function(dispatch) {
-      dispatch(fetchAllPosts());
-    };
-  }
+  // componentDidMount() {
+  //   return function(dispatch) {
+  //     dispatch(fetchPersonalPosts());
+  //   };
+  // }
   render() {
     const { personalPosts, error, loading } = this.props;
     if (error) {

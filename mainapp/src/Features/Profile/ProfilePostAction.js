@@ -57,54 +57,52 @@ export const createPostSuccess = data => {
 //       });
 //   };
 // };
-export const FETCH_PRODUCTS_BEGIN = "FETCH_PRODUCTS_BEGIN";
-export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
-export const FETCH_PRODUCTS_FAILURE = "FETCH_PRODUCTS_FAILURE";
+// export const FETCH_PRODUCTS_BEGIN = "FETCH_PRODUCTS_BEGIN";
+// export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
+// export const FETCH_PRODUCTS_FAILURE = "FETCH_PRODUCTS_FAILURE";
 
-export const fetchProductsBegin = () => ({
-  type: FETCH_PRODUCTS_BEGIN
-});
+// export const fetchProductsBegin = () => ({
+//   type: FETCH_PRODUCTS_BEGIN
+// });
 
-export const fetchProductsSuccess = products => ({
-  type: FETCH_PRODUCTS_SUCCESS,
-  payload: { products }
-});
+// export const fetchProductsSuccess = products => ({
+//   type: FETCH_PRODUCTS_SUCCESS,
+//   payload: { products }
+// });
 
-export const fetchProductsFailure = error => ({
-  type: FETCH_PRODUCTS_FAILURE,
-  payload: { error }
-});
+// export const fetchProductsFailure = error => ({
+//   type: FETCH_PRODUCTS_FAILURE,
+//   payload: { error }
+// });
 
-export const fetchPostss = products => {
-  return {
-    type: FETCH_POST,
-    products
-  };
-};
+// export const fetchPostss = products => {
+//   return {
+//     type: FETCH_POST,
+//     products
+//   };
+// };
 
-export const fetchAllPosts = () => {
-  return async dispatch => {
-    dispatch(fetchProductsBegin());
-    try {
-      const response = await fetch(`${apiUrl}/post/personal`, {
-        headers: headers
-      });
-      const res = await response;
-      const json = res.json();
-      console.log(response);
-      console.log(response.data);
-      json.then(a => {
-        //console.log(a.post);
-        // this.setState({
-        //   items: a.post
-        // });
-        console.log(a);
-        console.log(a.post);
-        dispatch(fetchProductsSuccess(a.post));
-        return a.post;
-      });
-    } catch (error) {
-      return dispatch(fetchProductsFailure(error));
-    }
-  };
-};
+// export const fetchPersonalPosts = () => {
+//   return async dispatch => {
+//     dispatch(fetchProductsBegin());
+//     try {
+//       const response = await fetch(`${apiUrl}/post/personal`, {
+//         headers: headers
+//       });
+//       const res = await response;
+//       const json = res.json();
+//       json.then(a => {
+//         //console.log(a.post);
+//         // this.setState({
+//         //   items: a.post
+//         // });
+//         console.log(a);
+//         console.log(a.post);
+//         dispatch(fetchProductsSuccess(a.post));
+//         return a.post;
+//       });
+//     } catch (error) {
+//       return dispatch(fetchProductsFailure(error));
+//     }
+//   };
+// };
