@@ -18,11 +18,11 @@ const description = [
   "She enjoys the outdoors and currently resides in upstate New York."
 ].join(" ");
 
-const mapStateToProps = state => ({
-  personalPosts: state.ppost.items,
-  loading: state.ppost.loading,
-  error: state.ppost.error
-});
+// const mapStateToProps = state => ({
+//   personalPosts: state.ppost.items,
+//   loading: state.ppost.loading,
+//   error: state.ppost.error
+// });
 class ProfilePost extends Component {
   // componentDidMount() {
   //   return function(dispatch) {
@@ -146,4 +146,4 @@ class ProfilePost extends Component {
   }
 }
 
-export default connect(mapStateToProps)(ProfilePost);
+export default connect()(ProfilePost);
