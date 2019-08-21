@@ -8,11 +8,13 @@ import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import { ConfigureStore } from "./app/Store/ConfigureStore";
 import { fetchProducts } from "./Features/Timeline/postActions";
+import { fetchProfileProducts } from "./Features/Profile/ProfileFetchData/ProfilefetchAction";
 // import { fetchPersonalPosts } from "./Features/Profile/ProfilePostAction";
 
 const store = ConfigureStore();
+
+store.dispatch(fetchProfileProducts());
 store.dispatch(fetchProducts());
-// store.dispatch(fetchPersonalPosts());
 console.log(store.getState());
 
 const rootEl = document.getElementById("root");

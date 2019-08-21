@@ -8,6 +8,7 @@ import LoginAuthNewReducer from "../../Features/Auth/Login/LoginAuthNewReducer";
 import productReducer from "../../Features/Timeline/postReducer";
 import NewReducerNow from "../../Features/Timeline/NewReducerNow";
 import profilePostReducer from "../../Features/Profile/ProfilePostReducers";
+import ProfileFetchReducer from "../../Features/Profile/ProfileFetchData/ProfileFetchReducer";
 // import profilefetchReducer from "../../Features/Profile/ProfileFetchPostReducer";
 
 const rootReducer = combineReducers({
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   async: AsyncReducer,
   post: productReducer,
   newpost: NewReducerNow,
-  addpost: profilePostReducer
+  addpost: profilePostReducer,
+  profileFetchReducer: ProfileFetchReducer
 });
 
 export default rootReducer;

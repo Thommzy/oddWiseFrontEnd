@@ -1,10 +1,10 @@
-import {
-  asyncActionStart,
-  asyncActionFinish,
-  asyncActionError
-} from "../Async/AsyncActions";
-import { FETCH_POST } from "./postConstants";
-import { ASYNC_ACTION_ERROR } from "../Async/AsyncConstants";
+// import {
+//   asyncActionStart,
+//   asyncActionFinish,
+//   asyncActionError
+// } from "../Async/AsyncActions";
+// import { FETCH_POST } from "./postConstants";
+// import { ASYNC_ACTION_ERROR } from "../Async/AsyncConstants";
 
 export const FETCH_PRODUCTS_BEGIN = "FETCH_PRODUCTS_BEGIN";
 export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
@@ -57,7 +57,7 @@ export function fetchProducts() {
       );
       const res = await response;
       const json = res.json();
-      console.log(json);
+      //console.log(json);
       json.then(a => {
         //console.log(a.post);
         // this.setState({
@@ -69,7 +69,7 @@ export function fetchProducts() {
         return a.post;
       });
 
-      console.log(json);
+      // console.log(json);
     } catch (error) {
       return dispatch(fetchProductsFailure(error));
     }

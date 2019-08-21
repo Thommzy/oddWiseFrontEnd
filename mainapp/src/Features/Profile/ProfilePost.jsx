@@ -12,23 +12,24 @@ import {
 import ProfilePostTextArea from "./ProfilePostTextArea";
 // import { fetchPersonalPosts } from "./ProfilePostAction";
 import { connect } from "react-redux";
+import { fetchProfileProducts } from "./ProfileFetchData/ProfilefetchAction";
 
 const description = [
   "Amy is a violinist with 2 years experience in the wedding industry.",
   "She enjoys the outdoors and currently resides in upstate New York."
 ].join(" ");
 
-// const mapStateToProps = state => ({
-//   personalPosts: state.ppost.items,
-//   loading: state.ppost.loading,
-//   error: state.ppost.error
-// });
+const mapStateToProps = state => ({
+  personalPosts: state.profileFetchReducer.items,
+  loading: state.profileFetchReducer.loading,
+  error: state.profileFetchReducer.error
+});
 class ProfilePost extends Component {
-  // componentDidMount() {
-  //   return function(dispatch) {
-  //     dispatch(fetchPersonalPosts());
-  //   };
-  // }
+  componentDidMount() {
+    return function(dispatch) {
+      dispatch(fetchProfileProducts());
+    };
+  }
   render() {
     const { personalPosts, error, loading } = this.props;
     if (error) {
@@ -80,11 +81,11 @@ class ProfilePost extends Component {
           <Grid.Row>
             <Grid.Column width={16}>
               <ProfilePostTextArea />
-              {/* {personalPosts.post &&
-                personalPosts.post.map((post, index) => (
-                  <Card className='timelineCard' fluid>
-                    <Card.Content header='About Amy' />
-                    <Card.Content description={personalPosts} />
+              {personalPosts.products &&
+                personalPosts.products.map((product, index) => (
+                  <Card key={index} className='timelineCard' fluid>
+                    <Card.Content header={product.user} />
+                    <Card.Content description={product.text} />
                     <Card.Content extra>
                       <Button as='div' labelPosition='right'>
                         <Button basic color='blue' icon>
@@ -99,45 +100,7 @@ class ProfilePost extends Component {
                       <Icon name='user' />4 Friends
                     </Card.Content>
                   </Card>
-                ))} */}
-              <Card className='timelineCard' fluid>
-                <Card.Content header='About Amy' />
-                <Card.Content description={personalPosts} />
-                <Card.Content extra>
-                  <Button as='div' labelPosition='right'>
-                    <Button basic color='blue' icon>
-                      <Icon name='heart' />
-                      Like
-                    </Button>
-                    <Label basic color='blue' as='a' pointing='left'>
-                      2,048
-                    </Label>
-                  </Button>
-                  <Icon name='user' />4 Friends
-                  <Icon name='user' />4 Friends
-                </Card.Content>
-              </Card>
-              <Card className='timelineCard' fluid>
-                <Card.Content header='About Amy' />
-                <Card.Content description={description} />
-                <Card.Content extra>
-                  <Icon name='user' />4 Friends
-                </Card.Content>
-              </Card>
-              <Card className='timelineCard' fluid>
-                <Card.Content header='About Amy' />
-                <Card.Content description={description} />
-                <Card.Content extra>
-                  <Icon name='user' />4 Friends
-                </Card.Content>
-              </Card>
-              <Card className='timelineCard' fluid>
-                <Card.Content header='About Amy' />
-                <Card.Content description={description} />
-                <Card.Content extra>
-                  <Icon name='user' />4 Friends
-                </Card.Content>
-              </Card>
+                ))}
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -146,4 +109,4 @@ class ProfilePost extends Component {
   }
 }
 
-export default connect()(ProfilePost);
+export default connect(mapStateToProps)(ProfilePost);
