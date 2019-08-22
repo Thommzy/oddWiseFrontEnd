@@ -85,7 +85,7 @@ class TimelinePost extends Component {
 
             <Grid.Column width={12}>
               {products.products &&
-                products.products.map((product, index) => (
+                products.products.reverse().map((product, index) => (
                   <Card key={index} className='timelineCard' fluid>
                     <Card.Content header={product.user} />
                     <Card.Content description={product.text} />

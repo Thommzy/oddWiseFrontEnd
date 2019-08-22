@@ -1,4 +1,4 @@
-import { ADD_POST, FETCH_POST } from "./ProfilePostConstants";
+import { ADD_POST, FETCH_POST, DELETE_POST } from "./ProfilePostConstants";
 import axios from "axios";
 
 const apiUrl = "https://oddwyse.herokuapp.com/api/v1";
@@ -20,6 +20,8 @@ export const createPost = ({ text }) => {
         }
       );
       dispatch(createPostSuccess(response.data));
+      await delay(1000);
+      dispatch(window.location.reload(true));
     } catch (error) {
       throw error;
     }
@@ -36,27 +38,33 @@ export const createPostSuccess = data => {
   };
 };
 
-// export const deletePostSuccess = id => {
-//   return {
-//     type: DELETE_POST,
-//     payload: {
-//       id
-//     }
-//   };
-// };
+const delay = ms => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+export const deletePostSuccess = id => {
+  return {
+    type: DELETE_POST,
+    payload: {
+      id
+    }
+  };
+};
 
-// export const deletePost = id => {
-//   return dispatch => {
-//     return axios
-//       .get(`${apiUrl}/delete/${id}`)
-//       .then(response => {
-//         dispatch(deletePostSuccess(response.data));
-//       })
-//       .catch(error => {
-//         throw error;
-//       });
-//   };
-// };
+export const deletePost = id => {
+  const pId = localStorage.getItem("pointPost");
+  return async dispatch => {
+    try {
+      const response = await axios.delete(`${apiUrl}/post/${pId}`, {
+        headers: headers
+      });
+      dispatch(deletePostSuccess(response.data));
+      await delay(1000);
+      dispatch(window.location.reload(true));
+    } catch (error) {
+      throw error;
+    }
+  };
+};
 // export const FETCH_PRODUCTS_BEGIN = "FETCH_PRODUCTS_BEGIN";
 // export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 // export const FETCH_PRODUCTS_FAILURE = "FETCH_PRODUCTS_FAILURE";
