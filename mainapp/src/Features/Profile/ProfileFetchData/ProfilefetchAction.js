@@ -29,7 +29,7 @@ const delay = ms => {
 export function fetchProfileProducts() {
   return async dispatch => {
     dispatch(fetchProductsBegin());
-    await delay(3000);
+    await delay(1000);
     try {
       const response = await fetch(
         "https://oddwyse.herokuapp.com/api/v1/post/personal",

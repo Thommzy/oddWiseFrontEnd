@@ -16,6 +16,7 @@ import { fetchProfileProducts } from "./ProfileFetchData/ProfilefetchAction";
 import DeleteButton from "./DeleteButton";
 import { deletePost } from "./ProfilePostAction";
 import Shimmer from "../Shimmer/Shimmer";
+import { likePost } from "./LikeAndUnlike/LikeActions";
 
 // const description = [
 //   "Amy is a violinist with 2 years experience in the wedding industry.",
@@ -32,6 +33,10 @@ const mapDispatchToProps = dispatch => {
   return {
     onDelete: id => {
       dispatch(deletePost(id));
+      // window.location.reload();
+    },
+    onLike: id => {
+      dispatch(likePost(id));
       // window.location.reload();
     }
   };
@@ -90,7 +95,12 @@ class ProfilePost extends Component {
                     <Card.Content header={product.user} />
                     <Card.Content description={product.text} />
                     <Card.Content extra>
-                      <Button as='div' labelPosition='right'>
+                      <Button
+                        onClick={this.props.onLike}
+                        id={product._id}
+                        as='div'
+                        labelPosition='right'
+                      >
                         <Button basic color='blue' icon>
                           <Icon name='heart' />
                           Like
