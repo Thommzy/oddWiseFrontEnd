@@ -6,11 +6,14 @@ import {
   LOGOUT
 } from "./LoginConstants";
 import { closeModal } from "../../Modals/ModalActions";
+const delay = ms => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
 
 //  const a = "2" + 2 - 2;
 //console.log(a);
 export const login = ({ email, password }, history) => {
-  return dispatch => {
+  return async dispatch => {
     dispatch({
       type: LOGIN_REQUEST,
       payload: {
@@ -30,6 +33,7 @@ export const login = ({ email, password }, history) => {
       .then(res => {
         console.log(res);
         localStorage.authToken = res.data.token;
+        console.log(res.data);
         history.push("/timeline");
         dispatch(closeModal());
 
@@ -40,7 +44,9 @@ export const login = ({ email, password }, history) => {
           }
         });
       })
-      .catch(res => {
+
+      .catch(err => {
+        console.log(err.response);
         dispatch({
           type: LOGIN_FAILURE,
           payload: "Invalid email or password"

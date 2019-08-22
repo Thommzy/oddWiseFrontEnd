@@ -1,0 +1,73 @@
+.br {
+  border-radius: 0px;
+}
+
+.w80 {
+  width: 80%;
+}
+
+.card {
+  border: 2px solid #fff;
+  padding: 30px 40px;
+  width: 80%;
+  margin: 50px auto;
+}
+
+.profilePic {
+  height: 27px;
+  width: 132px;
+  border-radius: 0%;
+}
+
+.comment {
+  height: 10px;
+  background: #777;
+  margin-top: 20px;
+}
+
+.wrapper {
+  position: relative;
+  right: 12px;
+  width: 0px;
+  -webkit-animation: fullView 0.5s forwards linear;
+          animation: fullView 0.5s forwards linear;
+}
+
+@-webkit-keyframes fullView {
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes fullView {
+  100% {
+    width: 100%;
+  }
+}
+
+.animate {
+  -webkit-animation: shimmer 2s infinite;
+          animation: shimmer 2s infinite;
+  background: -webkit-gradient(linear, left top, right top, color-stop(4%, #eff1f3), color-stop(25%, #e2e2e2), color-stop(36%, #eff1f3));
+  background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+  background-size: 1000px 100%;
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+/*# sourceMappingURL=Shimmer.css.map */

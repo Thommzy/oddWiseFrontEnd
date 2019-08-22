@@ -19,6 +19,8 @@ class LoginForm extends Component {
       return <div className='info-red'>{this.props.errorMessage}</div>;
     }
   }
+
+  
   render() {
     const { handleSubmit } = this.props;
     return (

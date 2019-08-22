@@ -22,9 +22,14 @@ const headers = {
   "x-auth": x
 };
 
+const delay = ms => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+
 export function fetchProfileProducts() {
   return async dispatch => {
     dispatch(fetchProductsBegin());
+    await delay(3000);
     try {
       const response = await fetch(
         "https://oddwyse.herokuapp.com/api/v1/post/personal",
