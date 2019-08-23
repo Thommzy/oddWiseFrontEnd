@@ -21,7 +21,7 @@ export const createPost = ({ text }) => {
       );
       dispatch(createPostSuccess(response.data));
       await delay(1000);
-      dispatch(window.location.reload(true));
+      // dispatch(window.location.reload(true));
     } catch (error) {
       throw error;
     }

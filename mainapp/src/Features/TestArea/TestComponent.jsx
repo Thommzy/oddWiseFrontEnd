@@ -28,7 +28,7 @@ class TestComponent extends Component {
     } = this.props;
     return (
       <div>
-        <h1>Test Compont</h1>
+        <h1>Test Component</h1>
         <h3>The Answer is {data}</h3>
         <Button
           loading={buttonName === "increment" && loading}

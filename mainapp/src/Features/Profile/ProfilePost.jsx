@@ -37,15 +37,17 @@ const mapDispatchToProps = dispatch => {
     },
     onLike: id => {
       dispatch(likePost(id));
+      //localStorage.setItem("pointPost", "l");
+      //this.setState(localStorage.setItem("pointPost", this.props.id));
       // window.location.reload();
     }
   };
 };
 
-const loadingImage = {
-  height: "105px",
-  width: "100%"
-};
+// const loadingImage = {
+//   height: "105px",
+//   width: "100%"
+// };
 
 // function addBox() {
 //   console.log(this.props.personalPosts.products[0]._id);
@@ -56,6 +58,11 @@ class ProfilePost extends Component {
   //   e.preventDefault();
   //   console.log("hello");
   // }
+  sendId() {
+    //console.log("testing");
+    localStorage.setItem("pointPost", "5d5ebc5e6daaa90017f60cf2");
+    //const pId = localStorage.getItem("pointPost");
+  }
   //close = () => this.setState({ open: false });
 
   componentDidMount() {
@@ -96,23 +103,32 @@ class ProfilePost extends Component {
                     <Card.Content description={product.text} />
                     <Card.Content extra>
                       <Button
-                        onClick={this.props.onLike}
-                        id={product._id}
+                        // onClick={this.props.onLike}
+                        onClick={() => {
+                          localStorage.setItem("pointPost", product._id);
+                          this.props.onLike();
+                        }}
+                        // id={product._id}
                         as='div'
                         labelPosition='right'
                       >
-                        <Button basic color='blue' icon>
-                          <Icon name='heart' />
-                          Like
+                        <Button basic color='blue'>
+                          <Icon
+                            name='heart'
+                            color={!this.props.onLike ? "red" : "green"}
+                            border='2px blue solid'
+                          />
                         </Button>
                         <Label
                           key={index}
                           basic
-                          color='blue'
+                          color='red'
                           as='a'
                           pointing='left'
                         >
-                          {product.likecounter}
+                          {product.likecounter > 1
+                            ? product.likecounter + 1
+                            : product.likecounter}
                         </Label>
                       </Button>
                       <Button as='div' labelPosition='right'>
