@@ -1,30 +1,26 @@
 import React, { Component } from "react";
-import { Segment, Container, Image } from "semantic-ui-react";
+import { Container, Image, Grid } from "semantic-ui-react";
 import "./Signup.css";
+import RegisterForm from "../Auth/Register/RegisterForm";
+import reg from "../images/register_img.png";
 
 class signUp extends Component {
   render() {
     return (
-      <Segment
-        inverted
-        textAlign='center'
-        vertical
-        className='oddWiseHomeSignPage'
-      >
-        <Container text>
-          <Image src='/assets/images/oddWise1.png' size='medium' />
-          <Image
-            src='/assets/images/oddWise2.png'
-            size='medium'
-            className='HomePageSecondImage'
-          />
-          <Image
-            src='/assets/images/oddWise7.png'
-            size='medium'
-            className='HomePageThirdImage'
-          />
+      <div className="signUpOverall">
+        <Container>
+          <Grid>
+            <Grid.Column mobile={16} tablet={8} computer={8}>
+              <RegisterForm />
+            </Grid.Column>
+            <Grid.Column mobile={16} tablet={8} computer={8}>
+              <div className="regImg">
+                <Image src={reg} />
+              </div>
+            </Grid.Column>
+          </Grid>
         </Container>
-      </Segment>
+      </div>
     );
   }
 }

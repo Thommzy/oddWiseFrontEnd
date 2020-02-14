@@ -3,7 +3,7 @@
 }
 
 .ui.fixed.menu {
-  background-image: linear-gradient(135deg, #010233 0%, #b45015 69%, #010233 89%) !important;
+  background: #203063;
 }
 
 .ui.main.container,

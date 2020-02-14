@@ -1,15 +1,15 @@
-import { createReducer } from "../../../app/Common/util/ReducerUtils";
+import { createReducer } from '../../../app/Common/util/ReducerUtils';
 import {
   LOGIN_REQUEST,
   LOGIN_FAILURE,
   LOGIN_SUCCESS,
   LOGOUT
-} from "./LoginConstants";
+} from './LoginConstants';
 
 const initialState = {
+  errorMessage: null,
   isAuthenticating: false,
-  currentUser: null,
-  errorMessage: null
+  currentUser: null
 };
 
 const loginRequest = (state, payload) => {
@@ -33,15 +33,15 @@ const loginSuccess = (state, payload) => {
   return {
     ...state,
     isAuthenticating: true,
-    currentUser: payload.email,
-    errorMessage: null
+    currentUser: payload.emailorusername
   };
 };
 
 const loginFailure = (state, payload) => {
   return {
     ...state,
-    isAuthenticating: false
+    isAuthenticating: false,
+    errorMessage: payload
   };
 };
 

@@ -1,30 +1,13 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Form, Segment, Button } from "semantic-ui-react";
+import { Form, Segment, Button, Header } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import { RegisterAction } from "./RegisterAction";
 import TextInput from "../../../app/Common/Form/TextInput";
 import "./RegisterForm.css";
 
-// const mapStateToProps = state => ({
-//   data: state.test.data,
-//   first_name: state.test.first_name
-// });
-
 class RegisterForm extends Component {
-  // state = {
-  //   first_name: "",
-  //   last_name: "",
-  //   email: "",
-  //   mobile_no: "",
-  //   password: ""
-  // };
-
-  // handleRegFormSubmit = values => {
-  //   console.log(values);
-  //   this.props.userPostFetch(this.state);
-  // };
   submit = values => {
     console.log(values);
     this.props.RegisterAction(values, this.props.history);
@@ -32,48 +15,52 @@ class RegisterForm extends Component {
 
   errorMessage() {
     if (this.props.errorMessage) {
-      return <div className='info-red'>{this.props.errorMessage}</div>;
+      return <div className="info-red">{this.props.errorMessage}</div>;
     }
   }
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div>
-        <Form size='large' onSubmit={handleSubmit(this.submit)}>
+      <div className="registerFormMain">
+        <Form size="large" onSubmit={handleSubmit(this.submit)}>
           <Segment>
+            <Header as="h2">Register</Header>
             <Field
-              name='first_name'
-              type='text'
+              name="name"
+              type="text"
               component={TextInput}
-              placeholder='FirstName'
+              placeholder="Name"
             />
             <Field
-              name='last_name'
-              type='text'
+              name="username"
+              type="text"
               component={TextInput}
-              placeholder='LastName'
+              placeholder="Username"
             />
             <Field
-              name='email'
-              type='text'
+              name="email"
+              type="text"
               component={TextInput}
-              placeholder='Email'
+              placeholder="Email"
             />
             <Field
-              name='mobile_no'
-              type='number'
+              name="mobile_no"
+              type="number"
               component={TextInput}
-              placeholder='MobileNumber'
+              placeholder="MobileNumber"
             />
             <Field
-              name='password'
-              type='password'
+              name="password"
+              type="password"
               component={TextInput}
-              placeholder='Password'
+              placeholder="Password"
             />
-            <Button className='registerButton' fluid size='large'>
+            <Button center className="registerButton" fluid size="large">
               Register
             </Button>
+            <Header as="h5">
+              Already have an account? <Link to="/timeline">Login</Link>
+            </Header>
           </Segment>
         </Form>
       </div>
@@ -92,7 +79,6 @@ const reduxFormSignin = reduxForm({
   form: "RegisterForm"
 })(RegisterForm);
 
-export default connect(
-  mapStateToProps,
-  { RegisterAction }
-)(withRouter(reduxFormSignin));
+export default connect(mapStateToProps, { RegisterAction })(
+  withRouter(reduxFormSignin)
+);

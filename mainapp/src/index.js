@@ -13,7 +13,10 @@ import { fetchProfileProducts } from "./Features/Profile/ProfileFetchData/Profil
 
 const store = ConfigureStore();
 
-store.dispatch(fetchProfileProducts());
+const token = localStorage.getItem("authToken");
+if (token) {
+  store.dispatch(fetchProfileProducts());
+}
 store.dispatch(fetchProducts());
 console.log(store.getState());
 

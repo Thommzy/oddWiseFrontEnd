@@ -1,65 +1,77 @@
+.mainLanding {
+  margin: 0px !important;
+  .ui.segment {
+    padding: 0px !important;
+    border: none !important;
+  }
+}
+
 .oddWiseHome {
-  display: flex;
-  align-items: center;
-  background-image: linear-gradient(
-    137deg,
-    rgb(255, 255, 255) 70%,
-    rgb(1, 26, 51) 29%
-  ) !important;
+  position: relative;
   height: 100vh;
 }
 
-img.ui.medium.image.HomePageSecondImage {
+.landingContent {
   position: absolute;
-  top: 60%;
-}
-
-.masthead .ui.menu .ui.button,
-.ui.menu a.ui.inverted.button {
-  margin-left: 0.5em;
-}
-
-.masthead h1.ui.header {
-  font-size: 4em;
-  font-weight: normal;
-}
-.ui.inverted.header {
-  color: #011a33;
-}
-
-.ui.inverted.button {
-  -webkit-box-shadow: 0 0 0 2px #fff inset !important;
-  box-shadow: 0 0 0 2px #fff inset !important;
-  background: #011a33;
-  color: #fff;
-  text-shadow: none !important;
-}
-img.ui.medium.image {
-  position: absolute;
-  left: 2%;
-  top: 9%;
-}
-.masthead h2 {
-  font-size: 1.7em;
-  font-weight: normal;
-}
-
-button.ui.huge.inverted.button {
-  border: #011a33 1px solid;
-  background: #011a33;
-  border-radius: 19px;
-  &:hover {
-    border: #011a33 1px solid;
-    background: #011a33;
-    border-radius: 19px;
-    color: white;
+  left: 45%;
+  top: 40%;
+  button.ui.button {
+    color: #000;
+    font-size: 20px;
   }
 }
+
+// img.ui.medium.image.HomePageSecondImage {
+//   position: absolute;
+//   top: 60%;
+// }
+
+// .masthead .ui.menu .ui.button,
+// .ui.menu a.ui.inverted.button {
+//   margin-left: 0.5em;
+// }
+
+// .masthead h1.ui.header {
+//   font-size: 4em;
+//   font-weight: normal;
+// }
+// .ui.inverted.header {
+//   color: #011a33;
+// }
+
+// .ui.inverted.button {
+//   -webkit-box-shadow: 0 0 0 2px #fff inset !important;
+//   box-shadow: 0 0 0 2px #fff inset !important;
+//   background: #011a33;
+//   color: #fff;
+//   text-shadow: none !important;
+// }
+// img.ui.medium.image {
+//   position: absolute;
+//   left: 2%;
+//   top: 9%;
+// }
+// .masthead h2 {
+//   font-size: 1.7em;
+//   font-weight: normal;
+// }
+
+// button.ui.huge.inverted.button {
+//   border: #011a33 1px solid;
+//   background: #011a33;
+//   border-radius: 19px;
+//   &:hover {
+//     border: #011a33 1px solid;
+//     background: #011a33;
+//     border-radius: 19px;
+//     color: white;
+//   }
+// }
 
 /* .footer.segment {
   padding: 5em 0;
 } */
 
-.secondary.inverted.pointing.menu {
-  border: none;
-}
+// .secondary.inverted.pointing.menu {
+//   border: none;
+// }

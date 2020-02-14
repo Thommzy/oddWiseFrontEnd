@@ -1,55 +1,50 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT
-} from "./LoginConstants";
-import { closeModal } from "../../Modals/ModalActions";
-const delay = ms => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-};
+} from './LoginConstants';
+import { closeModal } from '../../Modals/ModalActions';
 
-//  const a = "2" + 2 - 2;
-//console.log(a);
-export const login = ({ email, password }, history) => {
+export const login = ({ emailorusername, password }, history) => {
   return async dispatch => {
     dispatch({
       type: LOGIN_REQUEST,
       payload: {
-        email,
+        emailorusername,
         password
       }
     });
     axios
-      .post("https://oddwyse.herokuapp.com/api/v1/user/login", {
-        email,
+      .post('https://oddwyse.herokuapp.com/api/v1/user/login', {
+        emailorusername,
         password,
         headers: {
-          "Content-Type": "application/json;charset=UTF-8",
-          "Access-Control-Allow-Origin": "*"
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin': '*'
         }
       })
       .then(res => {
         console.log(res);
         localStorage.authToken = res.data.token;
         console.log(res.data);
-        history.push("/timeline");
+        history.push('/timeline');
         dispatch(closeModal());
 
         dispatch({
           type: LOGIN_SUCCESS,
           payload: {
-            email
+            emailorusername
           }
         });
       })
 
       .catch(err => {
-        console.log(err.response);
+        console.log(err.response.data.password);
         dispatch({
           type: LOGIN_FAILURE,
-          payload: "Invalid email or password"
+          payload: 'Invalid Details'
         });
       });
   };

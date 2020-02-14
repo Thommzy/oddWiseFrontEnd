@@ -1,7 +1,23 @@
-$RegisterButtonColor: #011a33;
+$RegisterButtonColor: #21bafe;
 $RegisterButtonText: #ffffff;
 
 button.ui.large.fluid.button.registerButton {
   background: $RegisterButtonColor !important;
   color: $RegisterButtonText !important;
+  border-radius: 25px;
+  width: 80%;
+  position: relative;
+  left: 8%;
+}
+.registerFormMain {
+  margin-top: 150px !important;
+  width: 80%;
+  position: relative;
+  height: 100vh;
+  .ui.segment {
+    border-radius: 0px;
+  }
+  h2.ui.header {
+    margin-top: 30px;
+  }
 }

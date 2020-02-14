@@ -1,9 +1,14 @@
 .ui.inverted.segment.signUpForm {
-  background: #011a33;
+  background: #fff;
   position: absolute;
-  top: 24%;
-  left: 32%;
-  width: 27%;
+  top: 54%;
+  width: 70%;
+  border-radius: 0px !important;
+}
+
+.ui.inverted.segment.signUpForm h2.ui.header {
+  color: #000;
+  margin-top: 30px;
 }
 
 img.ui.medium.image.HomePageThirdImage {
@@ -26,5 +31,14 @@ img.ui.medium.image.HomePageThirdImage {
 img.ui.medium.image.HomePageSecondImage {
   position: absolute;
   top: 60%;
+}
+
+.signUpOverall {
+  background: #203063;
+  position: relative;
+}
+
+.regImg {
+  margin-top: 80px;
 }
 /*# sourceMappingURL=Signup.css.map */

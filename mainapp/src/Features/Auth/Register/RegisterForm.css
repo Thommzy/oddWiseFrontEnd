@@ -1,5 +1,24 @@
 button.ui.large.fluid.button.registerButton {
-  background: #011a33 !important;
+  background: #21bafe !important;
   color: #ffffff !important;
+  border-radius: 25px;
+  width: 80%;
+  position: relative;
+  left: 8%;
+}
+
+.registerFormMain {
+  margin-top: 150px !important;
+  width: 80%;
+  position: relative;
+  height: 100vh;
+}
+
+.registerFormMain .ui.segment {
+  border-radius: 0px;
+}
+
+.registerFormMain h2.ui.header {
+  margin-top: 30px;
 }
 /*# sourceMappingURL=RegisterForm.css.map */

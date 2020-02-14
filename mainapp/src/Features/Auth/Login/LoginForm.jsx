@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { Form, Segment, Button } from "semantic-ui-react";
-import { Field, reduxForm } from "redux-form";
-import TextInput from "../../../app/Common/Form/TextInput";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { Form, Segment, Button } from 'semantic-ui-react';
+import { Field, reduxForm } from 'redux-form';
+import TextInput from '../../../app/Common/Form/TextInput';
 //import { signInAction } from "./LoginAction";
-import { login } from "./LoginNewAction";
-import { connect } from "react-redux";
-import "./LoginForm.css";
+import { login } from './LoginNewAction';
+import { connect } from 'react-redux';
+import './LoginForm.css';
 
 class LoginForm extends Component {
   submit = values => {
@@ -20,14 +20,13 @@ class LoginForm extends Component {
     }
   }
 
-  
   render() {
     const { handleSubmit } = this.props;
     return (
       <Form error size='large' onSubmit={handleSubmit(this.submit)}>
         <Segment>
           <Field
-            name='email'
+            name='emailorusername'
             component={TextInput}
             type='text'
             placeholder='Email Address'
@@ -48,11 +47,11 @@ class LoginForm extends Component {
   }
 }
 function mapStateToProps(state) {
-  return { errorMessage: state.auth.error };
+  return { errorMessage: state.auth.errorMessage };
 }
 
 const reduxFormSignin = reduxForm({
-  form: "LoginForm"
+  form: 'LoginForm'
 })(LoginForm);
 
 export default connect(

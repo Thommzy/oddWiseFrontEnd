@@ -27,7 +27,7 @@ export const ConfigureStore = () => {
   const middlewares = [thunk];
 
   const composedEnhancer = composeWithDevTools(applyMiddleware(...middlewares));
-  const persistedStorage = loadFromLocalStorage()
+  const persistedStorage = loadFromLocalStorage();
   const store = createStore(rootReducer, persistedStorage, composedEnhancer);
 
   store.subscribe(() => saveToLocalStorage(store.getState()));

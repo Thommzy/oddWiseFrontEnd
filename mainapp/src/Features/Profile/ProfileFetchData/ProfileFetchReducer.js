@@ -2,10 +2,10 @@ import {
   FETCH_PROFILE_POST_BEGIN,
   FETCH_PROFILE_POST_SUCCESS,
   FETCH_PROFILE_POST_FAILURE
-} from "./ProfilefetchAction";
+} from './ProfilefetchAction';
 
 const initialState = {
-  items: [],
+  profileitems: [],
   loading: false,
   error: null
 };
@@ -27,7 +27,7 @@ export default function ProfileFetchReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        items: action.payload
+        profileitems: action.payload
       };
 
     case FETCH_PROFILE_POST_FAILURE:

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Image, Container } from "semantic-ui-react";
+import { Grid, Container } from "semantic-ui-react";
 import ProfileImageSection from "./ProfileImageSection";
 import "./Profile.css";
 import ProfileDetails from "./ProfileDetails";

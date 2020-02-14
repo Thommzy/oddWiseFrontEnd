@@ -1,12 +1,14 @@
-import { ADD_POST, FETCH_POST, DELETE_POST } from "./ProfilePostConstants";
-import axios from "axios";
+import { ADD_POST, FETCH_POST, DELETE_POST } from './ProfilePostConstants';
+import axios from 'axios';
 
-const apiUrl = "https://oddwyse.herokuapp.com/api/v1";
+const apiUrl = 'https://oddwyse.herokuapp.com/api/v1';
 
-const x = localStorage.getItem("authToken");
+//const x = localStorage.getItem('authToken');
+const x =
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDNhZDAxNmM5YTE3MDVhMDgwYzYyN2EiLCJlbWFpbCI6InVzZXJvbmVAZ21haWwuY29tIiwibW9iaWxlX25vIjoiMDcwMzEyMzQ1NjciLCJmb2xsb3dpbmciOltdLCJmb2xsb3dlcnMiOltdLCJpYXQiOjE1NjkyMzM4ODUsImV4cCI6MTU2OTMyMDI4NX0.DNT_52wareT06eql2SRXIXbJkN-tIojx8-m07WePOMw';
 const headers = {
-  "Content-Type": "application/json",
-  "x-auth": x
+  'Content-Type': 'application/json',
+  Authorization: x
 };
 
 export const createPost = ({ text }) => {
@@ -21,7 +23,7 @@ export const createPost = ({ text }) => {
       );
       dispatch(createPostSuccess(response.data));
       await delay(1000);
-      // dispatch(window.location.reload(true));
+      dispatch(window.location.reload(true));
     } catch (error) {
       throw error;
     }
@@ -51,7 +53,7 @@ export const deletePostSuccess = id => {
 };
 
 export const deletePost = id => {
-  const pId = localStorage.getItem("pointPost");
+  const pId = localStorage.getItem('pointPost');
   return async dispatch => {
     try {
       const response = await axios.delete(`${apiUrl}/post/${pId}`, {

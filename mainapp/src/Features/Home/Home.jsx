@@ -7,32 +7,71 @@ import {
   Button,
   Icon
 } from "semantic-ui-react";
+import Particles from "react-particles-js";
+import logo from "../images/logo.svg";
+
+const particleOpt = {
+  particles: {
+    shadow: {
+      enable: true,
+      color: "#203063"
+    },
+    number: {
+      value: 50
+    },
+    size: {
+      value: 3
+    },
+    color: {
+      value: "#203063"
+    },
+    line_linked: {
+      shadow: {
+        enable: true,
+        color: "#203063",
+        blur: 2
+      }
+    }
+  },
+  interactivity: {
+    events: {
+      onhover: {
+        enable: true,
+        mode: "repulse"
+      }
+    }
+  }
+};
 
 const Home = ({ history }) => {
   return (
-    <div>
-      <Segment inverted textAlign='center' vertical className='oddWiseHome'>
-        <Container text>
-          <Image src='/assets/images/oddWise1.png' size='medium' />
-          <Image
-            src='/assets/images/oddWise2.png'
-            size='medium'
-            className='HomePageSecondImage'
+    <div className="mainLanding">
+      <Segment>
+        <div className="oddWiseHome">
+          <Particles
+            params={particleOpt}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%"
+            }}
           />
-          <Header as='h1' inverted>
+        </div>
+
+        <div className="landingContent">
+          <Header as="h3" inverted>
             <Image
-              size='massive'
-              src='/assets/logo.png'
-              alt='logo'
-              style={{ marginBottom: 12 }}
+              size="massive"
+              src={require("../images/logo.svg")}
+              alt="logo"
             />
-            Odd-Wise
+            {/* <img src={require("./svg/kiwi.svg")} /> */}
+            {/* Odd-Wise */}
           </Header>
-          <Button onClick={() => history.push("/signup")} size='huge' inverted>
-            Get started
-            <Icon name='right arrow' inverted />
-          </Button>
-        </Container>
+          <Button onClick={() => history.push("/signup")}>Get Started</Button>
+        </div>
       </Segment>
     </div>
   );

@@ -24,7 +24,7 @@ class NavBar extends Component {
   };
 
   handleRegister = () => {
-    this.props.openModal("RegisterModal");
+    this.props.history.push("/signup");
   };
 
   handleSignOut = () => {
@@ -35,17 +35,22 @@ class NavBar extends Component {
     const { auth, currentUser } = this.props;
     const authenticated = auth.isAuthenticating;
     return (
-      <Menu inverted fixed='top'>
+      <Menu inverted fixed="top">
         <Container>
-          <Menu.Item header as={Link} to='/'>
-            <img src='assets/logo.png' alt='logo' />
+          <Menu.Item header as={Link} to="/">
+            <img src="assets/logo.png" alt="logo" />
             Odd-Wise
           </Menu.Item>
           {authenticated && (
             <Fragment>
-              <Menu.Item name='Test' as={Link} to='/test' />
-              <Menu.Item name='Timeline' as={Link} to='/timeline' />
-              <Menu.Item name='Profile' as={Link} to='/profile' />
+              <Menu.Item name="Test" as={Link} to="/test" />
+              <Menu.Item name="Timeline" as={Link} to="/timeline" />
+              <Menu.Item
+                name="Profile"
+                as={Link}
+                to="/profile"
+                onClick={() => console.log("ss")}
+              />
             </Fragment>
           )}
           {/* <Menu.Item>
@@ -68,9 +73,4 @@ class NavBar extends Component {
   }
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    actions
-  )(NavBar)
-);
+export default withRouter(connect(mapStateToProps, actions)(NavBar));

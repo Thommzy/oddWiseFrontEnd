@@ -8,6 +8,7 @@ import TestComponent from "../../Features/TestArea/TestComponent";
 import ModalManager from "../../Features/Modals/ModalManager";
 import Timeline from "../../Features/Timeline/Timeline";
 import Profile from "../../Features/Profile/Profile";
+import { fetchProfileProducts } from "../../Features/Profile/ProfileFetchData/ProfilefetchAction";
 //import { ProtectedRoute } from "./RequireAuth";
 //import LoginForm from "../../Features/Auth/Login/LoginForm";
 
@@ -43,18 +44,17 @@ class App extends Component {
     return (
       <Fragment>
         <ModalManager />
-        <Route exact path='/' component={Home} />
+        <Route exact path="/" component={Timeline} />
         <Route
-          path='/(.+)'
+          path="/(.+)"
           render={() => (
             <Fragment>
-              <NavBar />
-              <Route exact path='/signup' component={signUp} />
-              <Container className='main'>
+              <Route exact path="/signup" component={signUp} />
+              <Container className="main">
                 <Switch key={this.props.location.key}>
-                  <Route exact path='/test' component={TestComponent} />
-                  <AuthRoute exact path='/timeline' component={Timeline} />
-                  <AuthRoute exact path='/profile' component={Profile} />
+                  <Route exact path="/test" component={TestComponent} />
+                  <Route exact path="/timeline" component={Timeline} />
+                  <AuthRoute exact path="/profile" component={Profile} />
                 </Switch>
               </Container>
             </Fragment>
