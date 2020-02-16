@@ -36,6 +36,8 @@ img.ui.medium.image.HomePageSecondImage {
 .signUpOverall {
   background: #203063;
   position: relative;
+  height: 100vh;
+  overflow: auto;
 }
 
 .regImg {
