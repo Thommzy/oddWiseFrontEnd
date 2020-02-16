@@ -29,7 +29,7 @@ class NavBar extends Component {
 
   handleSignOut = () => {
     this.props.logOut();
-    this.props.history.push("/signup");
+    this.props.history.push("/signin");
   };
   render() {
     const { auth, currentUser } = this.props;

@@ -55,11 +55,11 @@ class RegisterForm extends Component {
               component={TextInput}
               placeholder="Password"
             />
-            <Button center className="registerButton" fluid size="large">
+            <Button className="registerButton" fluid size="large">
               Register
             </Button>
             <Header as="h5">
-              Already have an account? <Link to="/timeline">Login</Link>
+              Already have an account? <Link to="/signin">Login</Link>
             </Header>
           </Segment>
         </Form>

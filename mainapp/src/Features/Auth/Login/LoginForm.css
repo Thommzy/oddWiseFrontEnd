@@ -1,5 +1,23 @@
 button.ui.large.fluid.button.LoginButton {
-  background: #011a33 !important;
+  background: #21bafe !important;
   color: #ffffff !important;
+  border-radius: 25px;
+  width: 80%;
+  position: relative;
+  left: 8%;
+}
+
+.loginFormMain {
+  width: 80%;
+  position: absolute;
+  top: 30%;
+}
+
+.loginFormMain .ui.segment {
+  border-radius: 0px;
+}
+
+.loginFormMain h2.ui.header {
+  margin-top: 30px;
 }
 /*# sourceMappingURL=LoginForm.css.map */
