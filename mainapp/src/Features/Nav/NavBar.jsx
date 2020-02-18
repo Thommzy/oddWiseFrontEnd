@@ -43,30 +43,25 @@ class NavBar extends Component {
           </Menu.Item>
           {authenticated && (
             <Fragment>
-              <Menu.Item name="Test" as={Link} to="/test" />
-              <Menu.Item name="Timeline" as={Link} to="/timeline" />
-              <Menu.Item
+              {/* <Menu.Item name="Test" as={Link} to="/test" />
+              <Menu.Item name="Timeline" as={Link} to="/timeline" /> */}
+              {/* <Menu.Item
                 name="Profile"
                 as={Link}
                 to="/profile"
                 onClick={() => console.log("ss")}
-              />
+              /> */}
             </Fragment>
           )}
           {/* <Menu.Item>
             <Button floated='right' positive inverted content='Create Event' />
           </Menu.Item> */}
-          {authenticated ? (
-            <SignedInMenu
-              signOut={this.handleSignOut}
-              currentUser={currentUser}
-            />
-          ) : (
+          {!authenticated ? (
             <SignedOutMenu
               signIn={this.handleSignIn}
               register={this.handleRegister}
             />
-          )}
+          ) : null}
         </Container>
       </Menu>
     );

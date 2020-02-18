@@ -1,4 +1,21 @@
 .ui.fluid.card.timelineCard {
   border-radius: 0px !important;
+  background: #f9f9f9;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.TimelineTweetDiv textarea {
+  border-radius: 13px !important;
+}
+
+.uploadIcon i.images.icon {
+  font-size: 2em;
+}
+
+.timelineTab .ui.segment {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
 }
 /*# sourceMappingURL=Timeline.css.map */

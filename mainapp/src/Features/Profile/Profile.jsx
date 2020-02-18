@@ -5,11 +5,13 @@ import "./Profile.css";
 import ProfileDetails from "./ProfileDetails";
 import ProfilePost from "./ProfilePost";
 import ProfileOthers from "./ProfileOthers";
+import NavBar from "../Nav/NavBar";
 
 export default class Profile extends Component {
   render() {
     return (
       <Container fluid>
+        <NavBar />
         <Grid>
           <Grid.Row>
             <Grid.Column width={3}>
