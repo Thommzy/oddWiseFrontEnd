@@ -20,7 +20,7 @@ const mapStateToProps = state => ({
 
 class NavBar extends Component {
   handleSignIn = () => {
-    this.props.openModal("LoginModal");
+    this.props.history.push("/signin");
   };
 
   handleRegister = () => {
