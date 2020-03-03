@@ -1,11 +1,11 @@
-import axios from 'axios';
-import { closeModal } from '../../Modals/ModalActions';
+import axios from "axios";
+import { closeModal } from "../../Modals/ModalActions";
 
-export const AUTHENTICATED = 'authenticated_user';
-export const UNAUTHENTICATED = 'unauthenticated_user';
-export const AUTHENTICATION_ERROR = 'authentication_error';
-export const SIGN_OUT_USER = 'SIGN_OUT_USER';
-const URL = 'https://oddwyse.herokuapp.com/api/v1/user';
+export const AUTHENTICATED = "authenticated_user";
+export const UNAUTHENTICATED = "unauthenticated_user";
+export const AUTHENTICATION_ERROR = "authentication_error";
+export const SIGN_OUT_USER = "SIGN_OUT_USER";
+const URL = "https://oddwyse.herokuapp.com/api/v1/user";
 export function RegisterAction(
   { name, username, email, mobile_no, password },
   history
@@ -22,13 +22,13 @@ export function RegisterAction(
       });
       dispatch({ type: AUTHENTICATED });
       console.log(res.data);
-      localStorage.setItem('user', res.data.reguser.apikey);
-      history.push('/timeline');
+      localStorage.setItem("user", res.data.reguser.apikey);
+      history.push("/timeline");
       dispatch(closeModal());
     } catch (error) {
       dispatch({
         type: AUTHENTICATION_ERROR,
-        payload: 'Invalid email or password'
+        payload: "Invalid email or password"
       });
     }
   };

@@ -1,4 +1,4 @@
-import { ADD_POST, DELETE_POST, FETCH_POST } from "./ProfilePostConstants";
+import { ADD_POST, DELETE_POST } from "./ProfilePostConstants";
 
 export default function profilePostReducer(state = [], action) {
   switch (action.type) {

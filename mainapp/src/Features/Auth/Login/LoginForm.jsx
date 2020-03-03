@@ -4,15 +4,24 @@ import { Form, Segment, Button, Header, Message } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 import TextInput from "../../../app/Common/Form/TextInput";
 //import { signInAction } from "./LoginAction";
-import { login } from "./LoginNewAction";
+//import { login } from "./LoginNewAction";
 import { connect } from "react-redux";
 import "./LoginForm.css";
 import { useAlert } from "react-alert";
+import { loginloading } from "../../../Actions/LoginActions";
+//import loginRequest from "../../../SagaLogin/Action";
 
 class LoginForm extends Component {
-  submit = values => {
-    console.log(values);
-    this.props.login(values, this.props.history);
+  submit = event => {
+    const { history } = this.props;
+    console.log(history);
+    const loginData = {
+      emailorusername: event.emailorusername,
+      password: event.password,
+      history
+    };
+    console.log(loginData);
+    this.props.login(loginData);
   };
 
   alert = () => useAlert();
@@ -60,8 +69,14 @@ function mapStateToProps(state) {
   return { errorMessage: state.auth.errorMessage };
 }
 
+const mapDispatchToProps = dispatch => ({
+  login: loginData => dispatch(loginloading(loginData))
+});
 const reduxFormSignin = reduxForm({
   form: "LoginForm"
 })(LoginForm);
 
-export default connect(mapStateToProps, { login })(withRouter(reduxFormSignin));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(reduxFormSignin));

@@ -3,6 +3,7 @@ import { Container, Image, Grid } from "semantic-ui-react";
 import "./Signup.css";
 import RegisterForm from "../Auth/Register/RegisterForm";
 import reg from "../images/register_img.png";
+import { connect } from "react-redux";
 
 class signUp extends Component {
   render() {
@@ -25,4 +26,11 @@ class signUp extends Component {
   }
 }
 
-export default signUp;
+function mapStateToProps(state) {
+  return {
+    loading: state.signupLoading,
+    signupSuccess: state.signupSuccess
+  };
+}
+
+export default connect(mapStateToProps)(signUp);

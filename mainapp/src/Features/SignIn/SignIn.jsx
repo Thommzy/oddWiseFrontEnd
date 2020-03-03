@@ -5,18 +5,12 @@ import LoginForm from "../Auth/Login/LoginForm";
 import log from "../images/login_img.png";
 import { connect } from "react-redux";
 import LoginLoaderInfo from "../Auth/Login/LoginLoaderInfo";
-import { positions, Provider } from "react-alert";
-import AlertTemplate from "react-alert-template-basic";
-import ErrorNotification from "./ErrorNotification";
-
-const options = {
-  timeout: 5000,
-  position: positions.BOTTOM_CENTER
-};
 
 class SignIn extends Component {
   loading() {
-    if (this.props.loading) {
+    // console.log(this.props.history);
+    const { loading } = this.props;
+    if (loading) {
       return (
         <div>
           <LoginLoaderInfo />
@@ -24,14 +18,17 @@ class SignIn extends Component {
       );
     }
   }
+
   render() {
+    const { history } = this.props;
     return (
       <div className="signInOverall">
         {this.loading()}
+        {/* {this.props.loginSuccess ? this.props.history.push("/timeline") : null} */}
         <Container>
           <Grid>
             <Grid.Column mobile={16} tablet={8} computer={8}>
-              <LoginForm />
+              <LoginForm history={history} />
             </Grid.Column>
             <Grid.Column mobile={16} tablet={8} computer={8}>
               <div className="regImg">
@@ -46,7 +43,10 @@ class SignIn extends Component {
 }
 
 function mapStateToProps(state) {
-  return { loading: state.auth.loading };
+  return {
+    loading: state.loginLoading,
+    loginSuccess: state.loginSuccess
+  };
 }
 
 export default connect(mapStateToProps)(SignIn);

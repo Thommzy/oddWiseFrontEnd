@@ -2,17 +2,10 @@ import React from "react";
 import { Menu, Button } from "semantic-ui-react";
 //import { Link } from "react-router-dom";
 
-const SignedOutMenu = ({ signIn, register }) => {
+const SignedOutMenu = ({ handleSignIn }) => {
   return (
     <Menu.Item position="right">
-      <Button onClick={signIn} basic inverted content="Login" />
-      <Button
-        onClick={register}
-        basic
-        inverted
-        content="Register"
-        style={{ marginLeft: "0.5em" }}
-      />
+      <Button onClick={handleSignIn} basic inverted content="Login" />
     </Menu.Item>
   );
 };

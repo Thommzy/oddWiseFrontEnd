@@ -1,36 +1,29 @@
-import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { createStore, applyMiddleware, compose } from "redux";
+import createSagaMiddleware from "redux-saga";
 import rootReducer from "../Reducers/rootReducers";
-import thunk from "redux-thunk";
+import postSaga from "../../Saga";
+import watchLoginloads from "../../Saga/LoginSaga";
+import { RegisterAction } from "../../Features/Auth/Register/RegisterAction";
+import watchSignuploads from "../../Saga/SignupSaga";
+import watchProfilePostLoads from "../../Saga/ProfilePostSaga";
+import watchdataPostingLoads from "../../Saga/dataPostingProfileSaga";
 
-function saveToLocalStorage(state) {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem("state", serializedState);
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-function loadFromLocalStorage() {
-  try {
-    const serializedState = localStorage.getItem("state");
-    if (serializedState === null) return undefined;
-    return JSON.parse(serializedState);
-  } catch (e) {
-    console.log(e);
-    return undefined;
-  }
-}
-
-export const ConfigureStore = () => {
-  const middlewares = [thunk];
-
-  const composedEnhancer = composeWithDevTools(applyMiddleware(...middlewares));
-  const persistedStorage = loadFromLocalStorage();
-  const store = createStore(rootReducer, persistedStorage, composedEnhancer);
-
-  store.subscribe(() => saveToLocalStorage(store.getState()));
-
+const ConfigureStore = () => {
+  const sagaMiddleware = createSagaMiddleware();
+  const store = createStore(
+    rootReducer,
+    compose(
+      applyMiddleware(sagaMiddleware),
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+  );
+  sagaMiddleware.run(postSaga);
+  sagaMiddleware.run(watchLoginloads);
+  sagaMiddleware.run(watchSignuploads);
+  sagaMiddleware.run(watchProfilePostLoads);
+  sagaMiddleware.run(watchdataPostingLoads);
   return store;
 };
+
+export default ConfigureStore;

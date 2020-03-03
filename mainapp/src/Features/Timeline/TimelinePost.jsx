@@ -1,51 +1,38 @@
 import React, { Component } from "react";
-import { Card, Icon, Container, Grid, Image } from "semantic-ui-react";
-
+import { Card, Icon, Container, Grid, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-
 import { fetchProducts } from "./postActions";
 import Shimmer from "../Shimmer/Shimmer";
-
-const mapStateToProps = state => ({
-  products: state.post.items,
-  loading: state.post.loading,
-  error: state.post.error
-});
+import { loadPosts } from "../../Actions";
 
 class TimelinePost extends Component {
   componentDidMount() {
-    return function(dispatch) {
-      dispatch(fetchProducts());
-    };
+    this.props.loadPosts();
   }
   render() {
-    const { error, loading, products } = this.props;
+    const { postError, postLoading, postSuccess, loadPosts } = this.props;
 
-    if (error) {
-      return <div>Error! {error.message}</div>;
+    if (postError) {
+      return <div>Error! {postError.message}</div>;
     }
 
-    if (loading) {
-      return (
-        <Container>
-          <div>
-            <Shimmer />
-            <Shimmer />
-            <Shimmer />
-            <Shimmer />
-            <Shimmer />
-            <Shimmer />
-          </div>
-        </Container>
-      );
-    }
     return (
       <Container>
         <Grid>
           <Grid.Column mobile={16} tablet={2} computer={0} />
           <Grid.Column mobile={16} tablet={12} computer={16}>
-            {products.products &&
-              products.products.map((product, index) => (
+            {postLoading ? (
+              <div>
+                <Shimmer />
+                <Shimmer />
+                <Shimmer />
+                <Shimmer />
+                <Shimmer />
+                <Shimmer />
+              </div>
+            ) : (
+              postSuccess &&
+              postSuccess.map((product, index) => (
                 <Card key={index} className="timelineCard" fluid>
                   <Card.Content header={product.user} />
                   <Card.Content description={product.text} />
@@ -56,7 +43,8 @@ class TimelinePost extends Component {
                     2.1K
                   </Card.Content>
                 </Card>
-              ))}
+              ))
+            )}
           </Grid.Column>
           <Grid.Column mobile={16} tablet={2} computer={0} />
         </Grid>
@@ -65,4 +53,14 @@ class TimelinePost extends Component {
   }
 }
 
-export default connect(mapStateToProps)(TimelinePost);
+const mapStateToProps = ({ postLoading, postSuccess, postError }) => ({
+  postLoading,
+  postSuccess,
+  postError
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadPosts: () => dispatch(loadPosts())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TimelinePost);

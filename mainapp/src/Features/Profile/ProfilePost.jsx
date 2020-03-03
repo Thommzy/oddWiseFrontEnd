@@ -16,37 +16,25 @@ import DeleteButton from "./DeleteButton";
 import { deletePost } from "./ProfilePostAction";
 import Shimmer from "../Shimmer/Shimmer";
 import { likePost } from "./LikeAndUnlike/LikeActions";
-
-// const description = [
-//   "Amy is a violinist with 2 years experience in the wedding industry.",
-//   "She enjoys the outdoors and currently resides in upstate New York."
-// ].join(" ");
-
-const mapStateToProps = state => ({
-  personalPosts: state.profileFetchReducer.profileitems.profile,
-  loading: state.profileFetchReducer.loading,
-  error: state.profileFetchReducer.error
-});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onDelete: id => {
-      dispatch(deletePost(id));
-    },
-    onLike: id => {
-      dispatch(likePost(id));
-    }
-  };
-};
+import { loadProfile } from "../../Actions/ProfileActions";
 
 class ProfilePost extends Component {
+  componentDidMount() {
+    this.props.loadProfilePosts();
+  }
+
   render() {
-    const { personalPosts, error, loading } = this.props;
-    if (error) {
-      return <div>Error! {error.message}</div>;
+    const {
+      profileSuccess,
+      profileError,
+      profileLoading,
+      trackHistory
+    } = this.props;
+    if (profileError) {
+      return <div>Error! {profileError.message}</div>;
     }
 
-    if (loading) {
+    if (profileLoading) {
       return (
         <Container>
           <Shimmer />
@@ -63,9 +51,9 @@ class ProfilePost extends Component {
         <Grid>
           <Grid.Row>
             <Grid.Column width={16}>
-              <ProfilePostTextArea />
-              {personalPosts &&
-                personalPosts.map((products, i) => (
+              <ProfilePostTextArea trackHistory={trackHistory} />
+              {profileSuccess &&
+                profileSuccess.map((products, i) => (
                   <Card key={i} className="timelineCard" fluid>
                     {products.user.map((subitem, i) => (
                       <Card.Content key={i} header={subitem.email} />
@@ -117,4 +105,13 @@ class ProfilePost extends Component {
   }
 }
 
+const mapStateToProps = ({ profileLoading, profileSuccess, profileError }) => ({
+  profileLoading,
+  profileSuccess,
+  profileError
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadProfilePosts: () => dispatch(loadProfile())
+});
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePost);

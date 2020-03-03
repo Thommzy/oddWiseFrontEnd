@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { Form, TextArea } from "semantic-ui-react";
+import { Form, Segment, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { createPost } from "./ProfilePostAction";
+import { Field, reduxForm } from "redux-form";
+import ProfileTextArea from "../../app/Common/Form/profileTextArea";
+import TextInput from "../../app/Common/Form/TextInput";
+import { loadData } from "../../Actions/PostDataActions";
+import { loadPosts } from "../../Actions";
 
 const inputStyle = {
   whiteSpace: "pre-wrap",
@@ -9,65 +13,45 @@ const inputStyle = {
 };
 
 class ProfilePostTextArea extends Component {
-  state = {
-    text: ""
-  };
-
-  handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
-  handleSubmit = e => {
-    //const { onAddPost } = this.props;
-    e.preventDefault();
-    if (this.state.text.trim()) {
-      this.props.onAddPost(this.state);
-      this.handleReset();
-      console.log(this.state);
-    }
-  };
-
-  handleReset = () => {
-    this.setState({
-      text: ""
-    });
+  submit = event => {
+    const { trackHistory } = this.props;
+    console.log(trackHistory);
+    const postData = {
+      text: event.text,
+      trackHistory
+    };
+    console.log(postData);
+    this.props.post(postData);
   };
   render() {
+    const { handleSubmit } = this.props;
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Field>
-            <label>What's Happening</label>
-            <TextArea
-              style={inputStyle}
-              type='text'
-              className='form-control'
-              name='text'
-              onChange={this.handleInputChange}
-              value={this.state.text}
-              placeholder='Write Your Post here'
+        <Form onSubmit={handleSubmit(this.submit)}>
+          <Segment>
+            <Field
+              name="text"
+              component={ProfileTextArea}
+              type="text"
+              placeholder="what's Happening"
+              rows="4"
             />
-          </Form.Field>
-          <button type='submit' className='btn btn-primary'>
-            Add Post
-          </button>
+          </Segment>
+          <Button className="LoginButton" fluid size="small" color="teal">
+            send
+          </Button>
         </Form>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddPost: post => {
-      dispatch(createPost(post));
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  post: postData => dispatch(loadData(postData))
+});
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(ProfilePostTextArea);
+const reduxFormProfilePost = reduxForm({
+  form: "ProfilePost"
+})(ProfilePostTextArea);
+
+export default connect(null, mapDispatchToProps)(reduxFormProfilePost);

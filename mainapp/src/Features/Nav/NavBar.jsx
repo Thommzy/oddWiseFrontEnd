@@ -27,17 +27,23 @@ class NavBar extends Component {
     this.props.history.push("/signup");
   };
 
+  myProfile = () => {
+    this.props.history.push("/profile");
+  };
+
   handleSignOut = () => {
-    this.props.logOut();
-    this.props.history.push("/signin");
+    localStorage.removeItem("token");
+    this.props.history.push("/timeline");
   };
   render() {
-    const { auth, currentUser } = this.props;
+    const { auth } = this.props;
     const authenticated = auth.isAuthenticating;
+    const token = localStorage.getItem("token");
+    const localNumber = localStorage.getItem("phoneNumber");
     return (
       <Menu inverted fixed="top">
         <Container>
-          <Menu.Item header as={Link} to="/">
+          <Menu.Item header as={Link} to="/timeline">
             <img src="assets/logo.png" alt="logo" />
             Odd-Wise
           </Menu.Item>
@@ -56,12 +62,18 @@ class NavBar extends Component {
           {/* <Menu.Item>
             <Button floated='right' positive inverted content='Create Event' />
           </Menu.Item> */}
-          {!authenticated ? (
+          {!token ? (
             <SignedOutMenu
-              signIn={this.handleSignIn}
-              register={this.handleRegister}
+              handleSignIn={this.handleSignIn}
+              // register={this.handleRegister}
             />
-          ) : null}
+          ) : (
+            <SignedInMenu
+              localNumber={localNumber}
+              myprofile={this.myProfile}
+              handleSignOut={this.handleSignOut}
+            />
+          )}
         </Container>
       </Menu>
     );

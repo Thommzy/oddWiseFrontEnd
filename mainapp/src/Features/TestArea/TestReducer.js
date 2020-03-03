@@ -1,30 +1,30 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./TestConstants";
-import { createReducer } from "../../app/Common/util/ReducerUtils";
+// import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./TestConstants";
+// import { createReducer } from "../../app/Common/util/ReducerUtils";
 
-const initialState = {
-  data: 0
-};
-
-// const TestReducer = (state = initialState, actions) => {
-//   switch (action.type) {
-//     case INCREMENT_COUNTER:
-//       return { ...state, data: state.data + 1 };
-//     case DECREMENT_COUNTER:
-//       return { ...state, data: state.data - 1 };
-//     default:
-//       return state;
-//   }
+// const initialState = {
+//   data: 0
 // };
 
-const incrementCounter = state => {
-  return { ...state, data: state.data + 1 };
-};
+// // const TestReducer = (state = initialState, actions) => {
+// //   switch (action.type) {
+// //     case INCREMENT_COUNTER:
+// //       return { ...state, data: state.data + 1 };
+// //     case DECREMENT_COUNTER:
+// //       return { ...state, data: state.data - 1 };
+// //     default:
+// //       return state;
+// //   }
+// // };
 
-const decrementCounter = state => {
-  return { ...state, data: state.data - 1 };
-};
+// const incrementCounter = state => {
+//   return { ...state, data: state.data + 1 };
+// };
 
-export default createReducer(initialState, {
-  [INCREMENT_COUNTER]: incrementCounter,
-  [DECREMENT_COUNTER]: decrementCounter
-});
+// const decrementCounter = state => {
+//   return { ...state, data: state.data - 1 };
+// };
+
+// export default createReducer(initialState, {
+//   [INCREMENT_COUNTER]: incrementCounter,
+//   [DECREMENT_COUNTER]: decrementCounter
+// });

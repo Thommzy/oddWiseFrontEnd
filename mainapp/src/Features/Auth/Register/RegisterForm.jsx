@@ -6,11 +6,20 @@ import { Field, reduxForm } from "redux-form";
 import { RegisterAction } from "./RegisterAction";
 import TextInput from "../../../app/Common/Form/TextInput";
 import "./RegisterForm.css";
+import { signupLoading } from "../../../Actions/SignUpAction";
 
 class RegisterForm extends Component {
-  submit = values => {
-    console.log(values);
-    this.props.RegisterAction(values, this.props.history);
+  submit = event => {
+    console.log(event);
+    const signupData = {
+      email: event.email,
+      name: event.name,
+      username: event.username,
+      mobile_no: event.mobile_no,
+      password: event.password
+    };
+    console.log(signupData);
+    this.props.signup(signupData);
   };
 
   errorMessage() {
@@ -72,13 +81,14 @@ function mapStateToProps(state) {
   return { errorMessage: state.auth.error };
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   userPostFetch: userInfo => dispatch(userPostFetch(userInfo))
-// });
+const mapDispatchToProps = dispatch => ({
+  signup: signupData => dispatch(signupLoading(signupData))
+});
 const reduxFormSignin = reduxForm({
   form: "RegisterForm"
 })(RegisterForm);
 
-export default connect(mapStateToProps, { RegisterAction })(
-  withRouter(reduxFormSignin)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(reduxFormSignin));

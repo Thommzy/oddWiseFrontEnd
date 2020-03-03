@@ -14,7 +14,7 @@ import SignIn from "../../Features/SignIn/SignIn";
 //import LoginForm from "../../Features/Auth/Login/LoginForm";
 
 const checkAuth = () => {
-  const token = localStorage.getItem("authToken");
+  const token = localStorage.getItem("token");
   if (!token) {
     return false;
   }
@@ -31,7 +31,7 @@ const AuthRoute = ({ component: Component, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: "/signup"
+              pathname: "/signin"
             }}
           />
         )

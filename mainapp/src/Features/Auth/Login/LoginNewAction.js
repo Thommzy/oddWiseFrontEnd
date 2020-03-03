@@ -55,7 +55,7 @@ export const login = ({ emailorusername, password }, history) => {
         // console.log(err.response);
         dispatch({
           type: LOGIN_FAILURE,
-          payload: err.response.data.passwor
+          payload: err.response.data.password
         });
       });
   };

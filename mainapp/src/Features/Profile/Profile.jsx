@@ -9,6 +9,8 @@ import NavBar from "../Nav/NavBar";
 
 export default class Profile extends Component {
   render() {
+    const { history } = this.props;
+    console.log(history);
     return (
       <Container fluid>
         <NavBar />
@@ -20,7 +22,7 @@ export default class Profile extends Component {
               <ProfileOthers />
             </Grid.Column>
             <Grid.Column width={13}>
-              <ProfilePost />
+              <ProfilePost trackHistory={history} />
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -1,10 +1,10 @@
 import React, { useEffect, Component } from "react";
+import { connect } from "react-redux";
 import { Header, Grid, Icon } from "semantic-ui-react";
 import TimelineAvatar from "./TimelineAvatar";
 import { Form } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
-import TextArea from "../../app/Common/Form/TextArea";
-import { connect } from "react-redux";
+//import TextArea from "../../app/Common/Form/RealTextArea";
 
 class TimelineHeader extends Component {
   componentDidMount() {
@@ -12,7 +12,6 @@ class TimelineHeader extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <Grid>
@@ -23,7 +22,7 @@ class TimelineHeader extends Component {
                 <TimelineAvatar />
               </Grid.Column>
               <Grid.Column mobile={12} tablet={14} computer={14}>
-                <div className="TimelineTweetDiv">
+                {/* <div className="TimelineTweetDiv">
                   <Form>
                     <Field
                       name="tweet"
@@ -32,7 +31,7 @@ class TimelineHeader extends Component {
                       placeholder="What's on Your mind?"
                     />
                   </Form>
-                </div>
+                </div> */}
               </Grid.Column>
               <Grid.Column mobile={1} tablet={1} computer={1}>
                 <div className="uploadIcon">
